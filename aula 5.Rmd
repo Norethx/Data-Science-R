@@ -1,0 +1,5 @@
+ajuda
+```{r}
+help(sd)
+head(iris)
+```

@@ -1,0 +1,63 @@
+Estrutura de dados
+---
+vetores
+---
+```{r}
+x = c(1,2,3,4,5,6)
+x
+x[1]
+x[1] = 10
+x[1]
+```
+Vetores de outros tipos
+```{r}
+Y = c('a','b','c','d')
+Y
+Z = c(1L,2L,3L)
+Z
+class(Z)
+```
+Matrizes
+```{r}
+VADeaths
+colnames(VADeaths)
+rownames(VADeaths)
+```
+Matrizes
+```{r}
+# , vazia a frente = acessar coluna
+VADeaths[,1]
+# segunda posição vazia acessar linha x,y (x = linha, y = coluna)
+VADeaths[1,]
+# acessar até terceira linha
+VADeaths[1:3,]
+VADeaths[c(1,3,5),]
+```
+DataFrame
+```{r}
+longley
+#funciona como matriz
+longley[,1:3]
+# acessar coluna com $
+longley$Unemployed
+#ou nome
+longley["Unemployed"]
+```
+Listas
+```{r}
+ability.cov
+#acessando elementos
+ability.cov$cov
+ability.cov[1]
+#verificando que são objetos direrentes
+class(ability.cov$cov)
+class(ability.cov$center)
+#acessando elemento dentro da lista
+ability.cov$cov[,1:3]
+```
+Fatores
+```{r}
+state.region
+state.region[2]
+```
+

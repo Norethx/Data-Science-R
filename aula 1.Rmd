@@ -1,0 +1,33 @@
+Formação de cientista de dados
+Aspectos diversos
+---
+Diretorio de trabalho
+```{r}
+getwd()
+setwd("c:\\dados")
+```
+
+
+```{r}
+class(iris)
+```
+```{r}
+iristeste = iris
+save(iristeste, file="iristeste.Rdata")
+rm(iristeste)
+iristeste
+```
+```{r}
+load(file="iristeste.Rdata")
+iristeste
+
+```
+```{r}
+x <- c(12,34,56,79)
+y <- c(1,6,9,14)
+plot(x,y)
+```
+
+
+```{r}
+```

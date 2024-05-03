@@ -1,0 +1,37 @@
+ 
+Principais Funções
+```{r}
+esoph
+#default 6 linhas
+head(esoph)
+tail(esoph)
+#10 linhas
+head(esoph, n=10)
+tail(esoph,10)
+```
+Dimensões
+```{r}
+dim(esoph)
+dim(esoph)[2]
+```
+Comprimento
+```{r}
+length(islands)
+```
+Nomes colunas
+```{r}
+colnames(esoph)
+```
+Nomes das linhas
+```{r}
+rownames(esoph)
+```
+Resumo
+```{r}
+summary(esoph)
+```
+Escolher arquivo
+```{r}
+file.choose()
+```
+

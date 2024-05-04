@@ -1,0 +1,49 @@
+Faça Você mesmo
+Tratar dados 'tempo.csv'
+Aparência: sol, nublado, chuva
+Temperatura: -130 até 130F
+umidade: 0 a 100
+Jogar: sim | nao
+
+Tratar dados NAs
+```{r}
+#carregar os dados
+dados = read.csv("tempo.csv", sep = ";", na.strings="", stringsAsFactors = T)
+head(dados)
+summary(dados)
+```
+Tratamento de Aparencia
+```{r}
+#verificar summary
+summary(dados$Aparencia)
+dados[dados$Aparencia == "menos" , ]$Aparencia = "sol"
+dados$Aparencia = factor(dados$Aparencia)
+summary(dados$Aparencia)
+```
+
+Tratamento de temperatura
+```{r}
+summary(dados$Temperatura)
+dados[dados$Temperatura < -130 | dados$Temperatura > 130,]$Temperatura = median(dados$Temperatura)
+summary(dados$Temperatura)
+```
+
+Tratamento de Umidade
+```{r}
+summary(dados$Umidade)
+dados[is.na(dados$Umidade) | dados$Umidade < 0 | dados$Umidade > 100,]$Umidade = median(dados[!is.na(dados$Umidade),]$Umidade)
+summary(dados$Umidade)
+```
+Tratamento Jogar
+```{r}
+summary(dados$Jogar)
+dados
+```
+Tratamento Vento
+```{r}
+summary(dados$Vento)
+dados[is.na(dados$Vento),]$Vento = "FALSO"
+dados$Vento = factor(dados$Vento)
+summary(dados$Vento)
+```
+

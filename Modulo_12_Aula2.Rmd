@@ -1,0 +1,44 @@
+Graficos basicos - Continuação
+
+boxplot
+```{r}
+boxplot(trees$Volume, main="Arvores", xlab = "volume")
+boxplot(trees$Volume, main="Arvores", xlab = "volume", col="blue", horizontal=T)
+boxplot(trees$Volume, main="Arvores", xlab = "volume", col="blue", outline=F, horizontal = T)
+
+```
+```{r}
+#notch
+boxplot(trees$Height, main="Arvores", xlab = "Altura", col="blue", notch = T)
+#dados do grafico
+boxplot.stats(trees$Height)
+#le apenas uma informação
+boxplot.stats(trees$Height)$stats
+```
+Varios graficos
+```{r}
+boxplot(trees)
+```
+agregação
+```{r}
+InsectSprays
+spray = aggregate(. ~ spray, data=InsectSprays,sum)
+spray
+```
+Grafico de barras
+```{r}
+#executar tudo
+barplot(spray$count, col = gray.colors(6), xlab= "Spray", ylab="Total", names.arg=spray$spray) 
+box()
+```
+
+Grafico de setores(Pizza)
+```{r}
+pie(spray$count, labels= spray$spray, main="Spray", col=c(1:6))
+```
+Pizza com legenda
+```{r}
+pie(spray$count, labels=NA, main="Spray", col=c(1:6))
+legend("bottomright", legend = spray$spray, cex = 1, fill=(1:6))
+```
+

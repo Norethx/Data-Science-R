@@ -1,0 +1,51 @@
+Faça você mesmo
+1.Arquivo dados.csv
+  1.Codigo
+  2.Municipio
+  3.Pib
+  4.Valorempenho
+  
+2. Empenho em diarias em municipos gauchos e PIB do municipio
+3.Execute um processo de Analise de Dados Exploratória para conhecimento/Entendimento dos dados
+
+
+
+```{r}
+df_dados = read.csv("dados.csv", sep=";")
+df_dados
+summary(df_dados)
+```
+plot PIB e Empenho
+```{r}
+plot(df_dados$PIB, df_dados$VALOREMPENHO, xlab="PIB", ylab="Empenho", main = "Resultado")
+boxplot(df_dados$PIB, col="green", outline = F, main="PIB", horizontal = T)
+boxplot(df_dados$PIB, col="blue", outline = F, main="PIB", horizontal = T)
+hist(df_dados$PIB, col="green", xlab="PIB", ylab="Frequencia", main="PIB")
+hist(df_dados$VALOREMPENHO, col="blue", xlab="Empenho", ylab="Frequencia", main="Empenho")
+```
+```{r}
+#lista dos 10 maiores pibs
+MPIB = df_dados[order(-df_dados$PIB)[1:10],]
+barplot(MPIB$PIB, col = blues9, ylab = "PIB", main="Maiores PIBs")
+legend("topright", legend=MPIB$MUNICIPIO, cex = 0.8, lty = 1:10, ncol= 2, fill=blues9)
+box()
+```
+
+```{r}
+#lista dos 10 maiores empenhos
+MEMP = df_dados[order(-df_dados$VALOREMPENHO)[1:10],]
+barplot(MEMP$VALOREMPENHO, col = blues9, ylab = "Empenho", main="Maiores Empenhos")
+legend("topright", legend=MPIB$MUNICIPIO, cex = 0.8, lty = 1:10, ncol= 2, fill=blues9)
+box()
+```
+```{r}
+#criar coluna nova com esforços por pib
+#grafico sobre
+df_dados$PROPORCAO = df_dados$VALOREMPENHO / df_dados$PIB
+df_dados
+MPROP = head(df_dados[order(-df_dados$PROPORCAO),],10)
+barplot(MPROP$PROPORCAO, col=blues9, ylab = "Proporção", main = "Maiores PIBs por esforço gasto")
+legend("topright", legend=MPROP$MUNICIPIO, ncol = 2, cex=0.8, fill=blues9)
+box()
+```
+

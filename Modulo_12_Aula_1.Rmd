@@ -1,0 +1,75 @@
+------
+Graficos básicos
+-----
+
+Histograma
+
+```{r}
+trees
+hist( trees$Height)
+hist( trees$Height, main="Arvores", ylab="Frenquencia",xlab="Altura", col="blue")
+hist( trees$Height, main="Arvores", ylab="Frenquencia",xlab="Altura", col="blue", density = 20, breaks= 20)
+
+```
+Densidade
+```{r}
+densidade = density(trees$Height)
+plot(densidade)
+
+```
+Densidade sobre o Histograma, parâmetro par
+```{r}
+#executar com Ctrl+shift+enter
+hist(trees$Height, main=NULL, xlab=NULL, col="green", ylab=NULL)
+par(new=T)
+plot(densidade, col="black", main="Arvores", axes=F , X=NULL)
+```
+Dispersão
+```{r}
+plot(trees$Girth, trees$volume)
+plot(trees$Girth, trees$volume, main="Arvores")
+plot(trees$Girth, trees$Volume, ylab="Circuferencia", xlab="Volume", col="blue", main="Arvores")
+#pch muda o elemento gradico
+plot(trees$Girth, trees$Volume, ylab="Circuferencia", xlab="Volume", col="blue", main="Arvores", pch=20)
+```
+Muda tipo
+```{r}
+plot(trees$Girth, trees$volume, ylab ="Circuferencia", xlab="volume", col="blue", main="Arvores", pch=20, type = "l")
+```
+
+Tremulação, diminui sobre posição
+```{r}
+plot(jitter(trees$Girth), trees$volume, 
+     ylab = "Circuferencia", 
+     xlab="volume", 
+     col="blue", 
+     main="Arvores",
+    )
+```
+Legenda com dimensão
+```{r}
+#CO2
+plot(CO2$conc, CO2$uptake,
+     pch=20,
+     col=CO2$Treatment)
+legend("bottomright", legend=c("nonchilled","chilled"),cex=1, fill=c("black","red"))
+```
+Novos dados
+```{r}
+plot(trees)
+```
+
+Divisão da tela
+```{r}
+split.screen(figs=c(2,2))
+screen(1)
+plot(trees$Girth, trees$Volume)
+screen(2)
+plot(trees$Girth, trees$Height)
+screen(3)
+plot(trees$Height, trees$Volume)
+screen(4)
+hist(trees$Volume)
+close.screen(all=T)
+```
+

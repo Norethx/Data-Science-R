@@ -1,0 +1,46 @@
+Amostragem simples
+---
+Testes de Normalidade
+Repetir o experimento
+```{r}
+set.seed(123)
+```
+gera mil variaveis
+```{r}
+x = rnorm(1000)
+```
+Graficos QQ
+```{r}
+qqnorm(x)
+qqline(x)
+```
+TEste de Shapiro
+Valor de p acima de 0,05, não há indicio para a não confirmar a hipotese nula de dados normalmente distribuidos
+```{r}
+shapiro.test(x)
+```
+Histograma com linha de densidade
+```{r}
+hist(x, main="")
+par(new=TRUE)
+plot(density(x),ylab="", xlab="", axes=F, lwd=2.5)
+```
+Dados não normalmente distribuidos
+```{r}
+library('semTools')
+m = mvrnonnorm(1000, c(1,2), matrix(c(10,2,2,5),2,2),
+               skewness = c(5,2), kurtosis = c(3,3))
+qqnorm(m)
+qqline(m)
+```
+
+```{r}
+shapiro.test(m)
+```
+
+```{r}
+hist(m, main='')
+par(new=TRUE)
+plot(density(m),ylab= '', axes=F, lwd=2.5)
+```
+

@@ -1,0 +1,30 @@
+Importar dataframe
+```{r}
+
+slr = read.csv('slr12.csv', sep=';')
+slr
+```
+correlação
+```{r}
+cor(slr)
+corrgram(slr, order = T, lower.panel = panel.shade,
+         upper.panel = panel.pie, text.panel = panel.txt, main = 'Franquia')
+```
+Criação de modelo de regreção linear
+```{r}
+modelo = lm(CusInic ~ FrqAnual, data = slr)
+modelo
+```
+
+```{r}
+summary(modelo)$r.squared
+summary(modelo)$adj.r.squared
+```
+```{r}
+plot(CusInic ~ FrqAnual, ylab='custo', xlab = 'Anual', main = 'Franquia', data = slr)
+abline(modelo)
+```
+```{r}
+predict(modelo, data.frame(FrqAnual = 1300))
+```
+
